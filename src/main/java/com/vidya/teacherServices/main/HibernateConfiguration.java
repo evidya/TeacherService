@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,12 @@ public class HibernateConfiguration {
 	@Autowired
     private Environment environment;
 
+	 @Bean
+	    public EmbeddedServletContainerCustomizer containerCustomizer() {
+	        return (container -> {
+	            container.setPort(8012);
+	        });
+	    }
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
