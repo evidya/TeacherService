@@ -1,3 +1,3 @@
 Please run the service getTeacher as http://localhost:8012/getTeacher?id=50050
 
-The JSON output is : {"teacher_EMAIL":"rshubaghi@gmail.com","teacher_PHONE":"4045309810","location":"GA","create_DATE":"2016-05-20","status":"Acitve","create_USER":"Prab","update_USER":null,"update_DATE":null,"teacher_ID":50050,"profile_EST_DATE":"2016-05-20","teacher_LAST_NAME":"Shubanghi","teacher_PWD_ENCPT":"s@banghi@","school_MIDDLE_FLAG":0,"school_HIGH_FLAG":0,"teacher_FIRST_NAME":"Radhika","school_ELEMENTARY_FLAG":1,"teacher_PROFILE_DATE_COMP_FLAG":0}
+The JSON output is : {"teacherID":50050,"teacherFirstName":"Radhika","teacherLastName":"Shubanghi","teacherEmail":"rshubaghi@gmail.com","teacherPhone":"4045309810","teacherLocation":"GA","teacherIsElementary":1,"teacherIsMiddle":0,"teacherIsHigh":0,"teacherStatus":"Acitve","teacherPassword":"s@banghi@"}

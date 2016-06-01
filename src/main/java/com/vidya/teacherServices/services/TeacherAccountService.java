@@ -1,8 +1,8 @@
 package com.vidya.teacherServices.services;
 
-import com.vidya.teacherServices.entities.TeacherAccount;
+import com.vidya.teacherServices.entities.TeacherAccountEntity;
 
 public interface TeacherAccountService {
-	public TeacherAccount getTeacherDetailsByID(long id) ;
-	public long saveTeacherDetails(TeacherAccount tAccount) ;
+	public TeacherAccountEntity getTeacherDetailsByID(long id) ;
+	public long saveTeacherDetails(TeacherAccountEntity tAccount) ;
 }

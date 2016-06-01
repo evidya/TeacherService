@@ -1,24 +1,27 @@
 package com.vidya.teacherServices.services;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import com.vidya.teacherServices.dao.TeacherAccountDao;
-import com.vidya.teacherServices.entities.TeacherAccount;
+import com.vidya.teacherServices.entities.TeacherAccountEntity;
 @Service("teacherAccountService")
 public class TeacherAccountServiceImpl implements TeacherAccountService {
 	@Autowired
     private TeacherAccountDao teacherAccountDao;
 	
 	@Override
-	@javax.transaction.Transactional
-	public TeacherAccount getTeacherDetailsByID(long id) {
+	@Transactional
+	public TeacherAccountEntity getTeacherDetailsByID(long id) {
 		return teacherAccountDao.getTeacherDetailsByID(id);
 	}
 
 	@Override
-	public long saveTeacherDetails(TeacherAccount tAccount) {
+	@Transactional
+	public long saveTeacherDetails(TeacherAccountEntity tAccount) {
 		return teacherAccountDao.saveTeacherDetails(tAccount);
 	}
 
