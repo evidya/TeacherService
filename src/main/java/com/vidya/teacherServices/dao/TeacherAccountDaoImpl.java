@@ -2,10 +2,8 @@ package com.vidya.teacherServices.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,9 +27,23 @@ public class TeacherAccountDaoImpl extends TeacherServicesAbstractDAO implements
 	@Override
 	public long saveTeacherDetails(TeacherAccountEntity tAccount) {
 		Session session = getSession();
+		
+		
+		System.out.println("Teacher account data for saving is : ");
+		
 		session.save(tAccount);
 		
 		session.flush();
 		return tAccount.getTEACHER_ID();
 	}
+	
+	public TeacherAccountEntity getTeacherDetailsByEmail(String email) {
+		TeacherAccountEntity tAccount = new TeacherAccountEntity();
+		Session session = getSession();
+			
+			Criteria criteria = session.createCriteria(TeacherAccountEntity.class);
+	        criteria.add(Restrictions.eq("TEACHER_EMAIL",email));
+	        tAccount = (TeacherAccountEntity)criteria.uniqueResult();
+	        return tAccount;
+		}
 }

@@ -10,8 +10,6 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -19,10 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "com.vidya.teacherServices.main" })
-//@PropertySource(value = { "application.properties" })
 public class HibernateConfiguration {
-	@Autowired
-    private Environment environment;
 
 	 @Bean
 	    public EmbeddedServletContainerCustomizer containerCustomizer() {
@@ -42,11 +37,6 @@ public class HibernateConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-//        dataSource.setUrl(environment.getRequiredProperty("spring.datasource.url"));
-//        dataSource.setUsername(environment.getRequiredProperty("spring.datasource.username"));
-//        dataSource.setPassword(environment.getRequiredProperty("spring.datasource.password"));
-        
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://atlantaedupilot.ch8fhxjvpfwt.us-east-1.rds.amazonaws.com:3306/vidya_dev");
         dataSource.setUsername("devk5s");
@@ -58,7 +48,6 @@ public class HibernateConfiguration {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", "true");
-        //properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
         return properties;        
     }
     

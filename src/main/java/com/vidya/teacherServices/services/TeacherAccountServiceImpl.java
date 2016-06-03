@@ -25,4 +25,10 @@ public class TeacherAccountServiceImpl implements TeacherAccountService {
 		return teacherAccountDao.saveTeacherDetails(tAccount);
 	}
 
+	@Override
+	@Transactional
+	public TeacherAccountEntity getTeacherDetailsByEmail(String email) {
+		return teacherAccountDao.getTeacherDetailsByEmail(email);
+	}
+
 }

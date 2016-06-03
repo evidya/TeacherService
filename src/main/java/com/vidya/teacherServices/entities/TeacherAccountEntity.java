@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TEACHER_ACCOUNT")
@@ -45,25 +44,25 @@ public class TeacherAccountEntity {
 	 @Column(name = "STATUS", nullable = false)
 	private String STATUS;
 	 
-	 @Column(name = "PROFILE_EST_DATE", nullable = false)
+	 @Column(name = "PROFILE_EST_DATE")
 	private Date PROFILE_EST_DATE;
 	 
 	 @Column(name = "TEACHER_PWD_ENCPT", nullable = false)
 	private String TEACHER_PWD_ENCPT;
 	 
-	 @Column(name = "TEACHER_PROFILE_DATE_COMP_FLAG", nullable = false)
+	 @Column(name = "TEACHER_PROFILE_DATE_COMP_FLAG")
 	private Integer TEACHER_PROFILE_DATE_COMP_FLAG;
 	 
-	 @Column(name = "CREATE_USER", nullable = false)
+	 @Column(name = "CREATE_USER")
 	private String CREATE_USER; 
 	 
 	 @Column(name = "CREATE_DATE", nullable = false)
 	private Date CREATE_DATE;
 	 
-	 @Column(name = "UPDATE_USER", nullable = false)
+	 @Column(name = "UPDATE_USER")
 	private String UPDATE_USER;
 	 
-	 @Column(name = "UPDATE_DATE", nullable = false)
+	 @Column(name = "UPDATE_DATE")
 	private Date UPDATE_DATE;
 
 	public String getTEACHER_FIRST_NAME() {

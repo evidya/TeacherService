@@ -1,8 +1,5 @@
 package com.vidya.teacherServices.model;
 
-import java.sql.Date;
-
-import javax.persistence.Column;
 
 public class TeacherAccount {
 	private long teacherID;
@@ -115,6 +112,19 @@ public class TeacherAccount {
 
 	public void setTeacherPassword(String teacherPassword) {
 		this.teacherPassword = teacherPassword;
+	}
+
+	@Override
+	public String toString() {
+		
+		String data = "email : " + this.teacherEmail + ", first name : " + this.teacherFirstName
+				//+ ", id : " + this.teacherID 
+				+ ", elem flag : " + this.teacherIsElementary 
+				+ ", high flag : " + this.teacherIsHigh + ", middle flag : " + 
+				this.teacherIsMiddle + ", lastname : " + this.teacherLastName + 
+				", location : " + this.teacherLocation + "pwd : " + this.teacherPassword
+				+ ", phone : " + this.teacherPhone ;
+		return data;
 	}
 
 	
