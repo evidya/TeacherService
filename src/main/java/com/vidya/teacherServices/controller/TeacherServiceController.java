@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.vidya.teacherServices.entities.TeacherAccountEntity;
+import com.vidya.teacherServices.model.Grade;
 import com.vidya.teacherServices.model.TeacherAccount;
 import com.vidya.teacherServices.services.StateService;
 import com.vidya.teacherServices.services.TeacherAccountService;
@@ -111,10 +112,24 @@ public class TeacherServiceController {
     		te.setCREATE_USER(te.getTEACHER_FIRST_NAME());
     		te.setUPDATE_USER(te.getTEACHER_FIRST_NAME());
     		te.setSTATUS("Active");
+    		
+    		if (tAccount.getTeacherIsElementary() == null)
+    		{
+    			te.setSCHOOL_ELEMENTARY_FLAG(0);
+    		}
+    		if(tAccount.getTeacherIsHigh() == null)
+    		{
+    			te.setSCHOOL_HIGH_FLAG(0);
+    		}
+    		if(tAccount.getTeacherIsMiddle() == null)
+    		{
+    			te.setSCHOOL_MIDDLE_FLAG(0);
+    		}
     		//add other fields if not default in DB
     		
     		try {
     			retVal = teacherAccountService.saveTeacherDetails(te);
+    			System.out.println("in controller : return value is : " + retVal);
     		} catch (Exception e) {
     			logger.error(e.getMessage());
     		}
@@ -160,5 +175,21 @@ public class TeacherServiceController {
     		
     	}
     	return te;
+    }
+    
+    @RequestMapping(value = "/getGrades", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Grade>  getGrades(@RequestParam(value = "teacherID") long teacherID) {
+    	 
+    	List<Grade> returnGrades = new ArrayList<Grade>();
+         try {
+        	 returnGrades = teacherAccountService.getGrades(teacherID);
+        	 
+        	
+         } catch (Exception e) {
+             logger.error(e.getMessage());
+            
+         }
+        return returnGrades;
     }
 }
