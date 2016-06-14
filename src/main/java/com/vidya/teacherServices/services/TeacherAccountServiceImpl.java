@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.vidya.teacherServices.dao.TeacherAccountDao;
 import com.vidya.teacherServices.entities.TeacherAccountEntity;
 import com.vidya.teacherServices.model.Grade;
+import com.vidya.teacherServices.model.Subject;
 @Service("teacherAccountService")
 public class TeacherAccountServiceImpl implements TeacherAccountService {
 	@Autowired
@@ -38,6 +39,12 @@ public class TeacherAccountServiceImpl implements TeacherAccountService {
 	@Transactional
 	public List<Grade> getGrades(long teacherID) {
 		return teacherAccountDao.getGrades(teacherID);
+	}
+
+	@Override
+	@Transactional
+	public List<Subject> getMasterSubjects(long teacherID) {
+		return teacherAccountDao.getMasterSubjects(teacherID);
 	}
 
 }

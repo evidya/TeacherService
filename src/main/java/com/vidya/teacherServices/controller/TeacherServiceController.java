@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vidya.teacherServices.entities.TeacherAccountEntity;
 import com.vidya.teacherServices.model.Grade;
+import com.vidya.teacherServices.model.Subject;
 import com.vidya.teacherServices.model.TeacherAccount;
 import com.vidya.teacherServices.services.StateService;
 import com.vidya.teacherServices.services.TeacherAccountService;
@@ -184,6 +185,23 @@ public class TeacherServiceController {
     	List<Grade> returnGrades = new ArrayList<Grade>();
          try {
         	 returnGrades = teacherAccountService.getGrades(teacherID);
+        	 
+        	
+         } catch (Exception e) {
+             logger.error(e.getMessage());
+            
+         }
+        return returnGrades;
+    }
+    
+    
+    @RequestMapping(value = "/getMasterSubjects", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Subject>  getMasterSubjects(@RequestParam(value = "teacherID") long teacherID) {
+    	 
+    	List<Subject> returnGrades = new ArrayList<Subject>();
+         try {
+        	 returnGrades = teacherAccountService.getMasterSubjects(teacherID);
         	 
         	
          } catch (Exception e) {
